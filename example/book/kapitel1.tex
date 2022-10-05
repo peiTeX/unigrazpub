@@ -1,0 +1,50 @@
+\chapter{Kapitelüberschrift}
+
+Bei Monografien entfallen die Zusammenfassungen je Kapitel. Die Kapitel sind nummeriert.
+
+\section{Überschrift 1. Grades}
+
+\blindtext
+
+\subsection{Überschrift 2. Ebene – Auflistungen}
+
+Innerhalb von Aufzählungen wird kein vertikaler Abstand gesetzt. Auch Absatzabstände entfallen hier.
+
+\begin{itemize}
+	\item Erster Eintrag
+	\item Zweiter Eintrag
+	\item Dritter Eintrag
+	\begin{itemize}
+		\item Erster Eintrag
+		\item Zweiter Eintrag
+		\item Dritter Eintrag
+	\end{itemize}
+\end{itemize}
+
+\begin{enumerate}
+	\item Erster Eintrag
+	\item Zweiter Eintrag
+	\item Dritter Eintrag
+	\begin{enumerate}
+		\item Erster Eintrag
+		\item Zweiter Eintrag
+		\item Dritter Eintrag
+	\end{enumerate}
+\end{enumerate}
+
+\blindtext
+\subsubsection{Wörtliche Zitate über mehrere Zeilen}
+
+Kurze Wörtliche Zitate werden durch \enquote{Anführungszeichen} gekennzeichnet. Bei längeren wird der Text samt Quellenangabe in einer quote-Umgebung platziert.
+
+\begin{quote}
+	Dies ist ein wörtliches Zitat, das über mehrere Zeilen, mindestens jedoch drei
+	Zeilen, geht und am Ende mit einer Fußnote belegt wird. Dies ist ein wörtliches
+	Zitat, das über mehrere Zeilen, mindestens jedoch drei Zeilen, geht und am Ende
+	mit einer Fußnote belegt wird.\autocite{test.2020}
+\end{quote}
+
+\subsubsection{Literaturverzeichnis}
+
+Das Literaturverzeichnis wird automatisch mithilfe von bibatex und biber erzeugt. Hierfür wird der Stil biblatex-chicago geladen. 
+

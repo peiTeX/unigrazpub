@@ -1,0 +1,110 @@
+\Article[
+authorkeys={author1, author2},
+subtitle=Untertitel,
+doi=XXXX
+]{Beitragstitel zweizeilig}
+
+
+\begin{abstract}[ngerman]
+	Dies ist eine Zusammenfassung. Zusammenfassungen bzw. Abstracts sollten ca.
+	800 bis 900 Zeichen (inkl. Leerzeichen) umfassen. Dies ist eine Zusammenfassung.
+	Zusammenfassungen bzw. Abstracts sollten ca. 800 bis 900 Zeichen (inkl.
+	Leerzeichen) umfassen. Dies ist eine Zusammenfassung. Zusammenfassungen
+	bzw. Abstracts sollten ca. 800 bis 900 Zeichen (inkl. Leerzeichen) umfassen. Dies
+	ist eine Zusammenfassung. Zusammenfassungen bzw. Abstracts sollten ca. 800 bis
+	900 Zeichen (inkl. Leerzeichen) umfassen. Dies ist eine Zusammenfassung.
+	Zusammenfassungen bzw. Abstracts sollten ca. 800 bis 900 Zeichen (inkl.
+	Leerzeichen) umfassen. Dies ist eine Zusammenfassung. Zusammenfassungen
+	bzw. Abstracts sollten ca. 800 bis 900 Zeichen (inkl. Leerzeichen) umfassen. Dies
+	ist eine Zusammenfassung. Zusammenfassungen bzw. Abstracts sollten ca. 800 bis
+	900 Zeichen (inkl. Leerzeichen) umfassen.
+	Schlagwörter:
+	
+	\keywords{Suchmaschine, treffend, drei, vier} 
+\end{abstract}
+
+
+\begin{abstract}[english]
+	This is an abstract. Abstracts should contain approximately 800 to 900 characters
+	(incl. spaces). This is an abstract. Abstracts should contain approximately 800 to
+	900 characters (incl. spaces). This is an abstract. Abstracts should contain
+	approximately 800 to 900 characters (incl. spaces). This is an abstract. Abstracts
+	should contain approximately 800 to 900 characters (incl. spaces). This is an
+	abstract. Abstracts should contain approximately 800 to 900 characters (incl.
+	spaces). This is an abstract. Abstracts should contain approximately 800 to 900
+	characters (incl. spaces). This is an abstract. Abstracts should contain
+	approximately 800 to 900 characters (incl. spaces). This is an abstract. Abstracts
+	should contain approximately 800 to 900 characters (incl. spaces). This is an
+	abstract. Abstracts should contain approximately 800 to 900 characters (incl.
+	spaces). 
+	
+	\keywords{search engine, matching, three, four}
+\end{abstract}
+
+%erzwungener Seitenumbruch vor Beginn des Textteils
+\clearpage
+
+\section{Überschrift 1. Grades}
+
+Absatzumbrüche werden durch eine halbe Leerzeichen gekennzeichnet. Ein Absatzeinzug erfolgt nicht. 
+
+\blindtext
+
+\subsection{Überschrift 2. Ebene – Auflistungen}
+
+Innerhalb von Aufzählungen wird kein vertikaler Abstand gesetzt. Auch Absatzabstände entfallen hier.
+
+\begin{itemize}
+	\item Erster Eintrag
+	\item Zweiter Eintrag
+	\item Dritter Eintrag
+	\begin{itemize}
+		\item Erster Eintrag
+		\item Zweiter Eintrag
+		\item Dritter Eintrag
+	\end{itemize}
+\end{itemize}
+
+\begin{enumerate}
+	\item Erster Eintrag
+	\item Zweiter Eintrag
+	\item Dritter Eintrag
+	\begin{enumerate}
+		\item Erster Eintrag
+		\item Zweiter Eintrag
+		\item Dritter Eintrag
+	\end{enumerate}
+\end{enumerate}
+
+\blindtext
+\subsubsection{Wörtliche Zitate über mehrere Zeilen}
+
+Kurze Wörtliche Zitate werden durch \enquote{Anführungszeichen} gekennzeichnet. Bei längeren wird der Text samt Quellenangabe in einer quote-Umgebung platziert.
+
+\begin{quote}
+	Dies ist ein wörtliches Zitat, das über mehrere Zeilen, mindestens jedoch drei
+	Zeilen, geht und am Ende mit einer Fußnote belegt wird. Dies ist ein wörtliches
+	Zitat, das über mehrere Zeilen, mindestens jedoch drei Zeilen, geht und am Ende
+	mit einer Fußnote belegt wird.\autocite{test.2020}
+\end{quote}
+
+\subsubsection{Abbildungen}
+Abbildungen werden wie gewohnt eingefügt. Bei der Platzierung ist darauf zu achten, dass – sofern möglich – die Voreinstellung (htb) nicht verändert werden soll.
+Abbildung \ref{fig:example-image} ist ein Beispiel für die Verwendung. 
+
+\begin{figure}
+	\centering
+	\includegraphics[width=.5\linewidth]{example-image}
+	\caption{Eine Beispielabbildung. Sie wird gleitend im Text platziert um den maximal möglichen Lesefluss zu erhalten. Um den Textbezug dadurch nicht zu verlieren wird auf die Abbildungsnummer verwiesen.}
+	\label{fig:example-image}
+\end{figure}
+
+
+\subsubsection{Literaturverzeichnis}
+
+Das Literaturverzeichnis wird automatisch mithilfe von BibLaTeX und biber erzeugt. Hierfür wird der Stil biblatex-chicago geladen. 
+
+Die Quellen werden in einer bib-Datei je Beitrag gesammelt. Es ist Möglich durch die Herausgeber eine gesammelte Datei anzulegen um ggf. Datendopplungen zu vermeiden. Da jeder Beitrag jedoch ohnehin über ein eigenes Literaturverzeichnis verfügt ist dies nicht zwingend notwendig. 
+
+
+\printbibliography

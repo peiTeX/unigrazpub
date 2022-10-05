@@ -1,0 +1,33 @@
+% !TeX program=lualatex
+\documentclass[ngerman,collection=true]{unigrazpub}
+
+\usepackage[english,main=ngerman]{babel}
+\usepackage{microtype}
+
+
+%Literaturdatenbank einfügen
+\addbibresource{literatur-beitrag1.bib}%Literatureinträge für den ersten Beitrag und Autor:innendaten
+
+%Das folgende Paket ist nur für Demonstrationszwecke und kann für die eigentlichen Beiträge entfernt werdden
+\usepackage{blindtext}
+
+\title{Bandtitel}
+\author{Herausgeber}
+\date{2022}
+
+\begin{document}
+
+\input{impressum}
+
+\tableofcontents
+	
+% Einbinden der einzelnen Beiträge
+\include{beitrag1}
+%\include{beitrag2}
+%\include{beitrag3}
+
+\appendix
+
+\listofauthors
+
+\end{document}

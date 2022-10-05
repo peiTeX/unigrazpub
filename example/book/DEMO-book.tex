@@ -1,0 +1,38 @@
+% !TeX program=lualatex
+\documentclass[ngerman]{unigrazpub}% Hauptsprache als globale Option
+
+\usepackage[english,main=ngerman]{babel}
+\usepackage{microtype}
+
+%Literaturdatenbank einfügen
+\addbibresource{literatur.bib}
+
+%Das folgende Paket ist nur für Demonstrationszwecke und kann für die eigentlichen Beiträge entfernt werdden
+\usepackage{blindtext}
+
+\title{Bandtitel}
+\author{Herausgeber}
+\date{2022}
+
+\begin{document}
+	
+\author{Marei Peischl}
+\title{\LaTeX-Templates für Graz University Library Publishing}
+\subtitle{Ein Beispiel für eine Monografie}
+\date{September 2022}
+\edition{1. Auflage}
+
+\input{impressum}
+
+\maketitle
+	
+
+\tableofcontents
+
+\include{kapitel1}
+
+\appendix
+
+\printbibliography
+
+\end{document}
