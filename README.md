@@ -14,7 +14,12 @@ unigrazpub 2022/10/05 v1.00
 ## Provided files
 
 * README.md
-* build.lua
+* build.lua - build script for l3build
+* tex/unigrazpub.cls - document class
+
+and the demo projects within
+example/book and example/collection
+
 
 
 ## Installation Notes
