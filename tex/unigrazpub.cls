@@ -258,9 +258,16 @@
 }
 
 
-\AddToHook{include/before}{\begingroup}
+
+\bool_if:NTF \g__ptxcd_collection_bool {
+	\AddToHook{include/before}{\begin{refsection}}
+		\AddToHook{include/after}{\end{refsection}}
+} {
+	\AddToHook{include/before}{\begingroup}
+	\AddToHook{include/after}{\endgroup}
+}
+
 \AddToHook{include/end}{\label{\currentarticlelabel.last}}
-\AddToHook{include/after}{\endgroup}
 
 \AddToHook{env/enumerate/begin}{\setlength{\parskip}{\z@}}
 \AddToHook{env/itemize/begin}{\setlength{\parskip}{\z@}}
