@@ -379,8 +379,8 @@
 %fußnoten
 \deffootnote[5mm]{5mm}{-5mm}{\textsuperscript{\thefootnotemark}}
 
-\title{Bandtitel}
-\author{Herausgeber}
+\title{}
+\author{}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 % pagestyle
