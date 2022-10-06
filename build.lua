@@ -11,10 +11,10 @@ packtdszip = true
 typesetexe="lualatex"
 typesetopts=""
 
-supportdir = "example/"
+supportdir = "examples/"
 
 typesetsuppfiles = {"*/*.tex", "*/*.bib"}
-demofiles = {"example/*/*.tex", "example/*/*.bib"}
+demofiles = {"examples/*/*.tex", "examples/*/*.bib"}
 typesetdemofiles = { "example/*/DEMO*.tex" }
 
 textfiles = {"*.md"}
