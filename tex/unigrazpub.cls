@@ -340,7 +340,6 @@
 
 \tl_new:N \g_ptxcd_collection_imprint_info_tl
 \tl_new:N \l_ptxcd_doi_tl
-\tl_new:N \l__ptxcd_license_tl
 
 \tl_gset:Nn \g_ptxcd_collection_imprint_info_tl {
 	\@title,~\@author,~\@date,~S.~ \pageref{\currentarticlelabel.first}–\pageref{\currentarticlelabel.last}
