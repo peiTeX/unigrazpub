@@ -33,7 +33,7 @@
 \keys_define:nn {ptxcd} {
 	collection .bool_gset:N = \g__ptxcd_collection_bool,
 	collection .initial:n = false,
-	license-type .tl_gset:N = \g__ptxcd_license_tl,
+	license-type .tl_gset:N = \g__ptxcd_license_type_tl,
 	license-type .initial:n = CC,
 	license-modifier .tl_gset:N =\g__ptxcd_license_modifier_tl,
 	license-modifier .initial:n =by,
@@ -234,7 +234,7 @@
 \clist_new:N \l_UniGraz_author_clist
 \clist_new:N \l_UniGraz_authorkeys_clist
 
-\keys_define:nn {UniGraz} {
+\keys_define:nn {ptxcd/article} {
 	author .clist_set:N = \l_UniGraz_author_clist,
 	authorkeys .clist_set:N = \l_UniGraz_authorkeys_clist,
 	title .tl_set:N = \l_UniGraz_title_tl,
@@ -245,13 +245,27 @@
 	imprint .initial:n =  {
 		\citeimprint {\clist_use:Nn \l_UniGraz_authorkeys_clist {,}}
 	},
+	license-type .tl_set:N = \l__ptxcd_license_type_tl,
+	license-type .initial:n =,
+	license-modifier .tl_set:N = \l__ptxcd_license_modifier_tl,
+	license-modifier .initial:n =,
+	license-version .tl_set:N = \l__ptxcd_license_version_tl,
+	license-version .initial:n =,
+	license .tl_set:N = \l__ptxcd_license_tl,
 	unknown .code:n = \tl_put_right:Nx \l_UniGraz_unknown_tl {,\l_keys_key_tl =\exp_not:n {#1}},
 }
 
 \cs_new:Nn \__UniGraz_clear_article_vars: {
-	\clist_map_inline:nn {title,subtitle,imprint,unknown,head,doi} {
+	\clist_map_inline:nn {title,subtitle,unknown,head,doi} {
 		\tl_clear:c {l_UniGraz_##1_tl}
 	}
+
+	\tl_set:Nn \l_UniGraz_imprint_tl {\citeimprint {\clist_use:Nn \l_UniGraz_authorkeys_clist {,}}}
+
+	\tl_set_eq:NN \l__ptxcd_license_type_tl \g__ptxcd_license_type_tl
+	\tl_set_eq:NN \l__ptxcd_license_modifier_tl \g__ptxcd_license_modifier_tl
+	\tl_set_eq:NN \l__ptxcd_license_version_tl \g__ptxcd_license_version_tl
+
 	\clist_clear:N \l_UniGraz_author_clist
 	\clist_clear:N \l_UniGraz_authokeys_clist
 	\tl_set:Nn \l_UniGraz_head_tl {l_UniGraz_title_tl}
@@ -276,7 +290,12 @@
 
 \newcommand*{\Article}[2][]{
 	\__UniGraz_clear_article_vars:
-	\keys_set:nn {UniGraz} {title={#2},#1}
+	\keys_set:nn {ptxcd/article} {title={#2},#1}
+
+	\tl_set_eq:NN \doclicense@type \l__ptxcd_license_type_tl
+	\tl_set_eq:NN \doclicense@modifier \l__ptxcd_license_modifier_tl
+	\tl_set_eq:NN \doclicense@version \l__ptxcd_license_version_tl
+
 	\clist_if_empty:NF \l_UniGraz_authorkeys_clist
 	{
 		\clist_if_empty:NT \l_UniGraz_author_clist {
@@ -310,7 +329,7 @@
 				\g_ptxcd_collection_imprint_info_tl\\
 				\tl_if_empty:NF \l_ptxcd_doi_tl {\exp_args:No \url{https://doi.org/\l_ptxcd_doi_tl}}
 				\par\addvspace{\baselineskip}
-				 \g_ptxcd_license_tl
+				\l__ptxcd_license_tl
 				\par\addvspace{\baselineskip}
 				\l_UniGraz_imprint_tl\par
 			}
@@ -321,14 +340,15 @@
 
 \tl_new:N \g_ptxcd_collection_imprint_info_tl
 \tl_new:N \l_ptxcd_doi_tl
-\tl_new:N \g_ptxcd_license_tl
+\tl_new:N \l__ptxcd_license_tl
 
 \tl_gset:Nn \g_ptxcd_collection_imprint_info_tl {
 	\@title,~\@author,~\@date,~S.~ \pageref{\currentarticlelabel.first}–\pageref{\currentarticlelabel.last}
 }
 
-\tl_gset:Nn \g_ptxcd_license_tl {
-	Dieses~Werk~ist~lizenziert~unter~einer~\href{https://creativecommons.org/licenses/by/4.0/deed.de}{Creative~Commons~Namensnennung~4.0~International~Lizenz},
+\tl_set:Nn \l__ptxcd_license_tl {
+	Dieses~Werk~ist~lizenziert~unter~einer~
+	\doclicenseLongName~Lizenz,~
 	ausgenommen~von~dieser~Lizenz~sind~Abbildungen,~Screenshots~und~Logos.
 }
 
@@ -561,8 +581,8 @@ font=\sffamily\huge,
 \RequirePackage{graphicx}
 
 \ExplSyntaxOn
-\tl_if_empty:NF \g__ptxcd_license_tl {
-	\PassOptionsToPackage{type=\g__ptxcd_license_tl}{doclicense}
+\tl_if_empty:NF \g__ptxcd_license_type_tl {
+	\PassOptionsToPackage{type=\g__ptxcd_license_type_tl}{doclicense}
 	\PassOptionsToPackage{modifier=\g__ptxcd_license_modifier_tl}{doclicense}
 	\PassOptionsToPackage{version=\g__ptxcd_license_version_tl}{doclicense}
 	\RequirePackage[
