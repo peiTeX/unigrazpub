@@ -561,7 +561,7 @@ font=\sffamily\huge,
 \RequirePackage{graphicx}
 
 \ExplSyntaxOn
-\tl_if_empty:NF \g_ptxcd_license_tl {
+\tl_if_empty:NF \g__ptxcd_license_tl {
 	\PassOptionsToPackage{type=\g__ptxcd_license_tl}{doclicense}
 	\PassOptionsToPackage{modifier=\g__ptxcd_license_modifier_tl}{doclicense}
 	\PassOptionsToPackage{version=\g__ptxcd_license_version_tl}{doclicense}
@@ -572,7 +572,8 @@ font=\sffamily\huge,
 }
 \ExplSyntaxOff
 
-\RequirePackage[hidelinks]{hyperref}
+\PassOptionsToPackage{hidelinks}{hyperref}
+\RequirePackage{hyperref}
 
 \extratitle{\begingroup\sffamily\bfseries\fontsize{9bp}{12bp}\def\and{,\space}\selectfont\@author\par\vspace{.5\baselineskip}\@title\par\@subtitle\endgroup}
 
