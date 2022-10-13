@@ -5,14 +5,13 @@ module = "unigrazpub"
 typesetexe="lualatex"
 
 supportdir = "examples/"
-
 typesetsuppfiles = {"*/*.tex", "*/*.bib"}
-demofiles = {"examples/*/*.tex", "examples/*/*.bib"}
+typesetdemofiles = {"examples/*/DEMO*.tex"}
+demofiles = {"examples/*"}
+flatten=false
 
 typesetdemofiles = {"DEMO*.tex"}
-typesetfiles = {"*.dtx", "DEMO*.tex"}
-
-textfiles = {"*.md"}
+typesetfiles = {"*.dtx"}
 
 function typeset(file,dir,exe)
 	dir = dir or "."
