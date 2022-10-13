@@ -458,8 +458,8 @@
 	\renewcommand*{\theequation}{\arabic{equation}}
 	\renewcommand*{\chapterlinesformat}[3]{
 		\str_if_eq:nnTF {#1} {article} {
-			\clist_if_empty:NF \l_UniGraz_author_clist {\parbox{\textwidth}{
-					\usekomafont{chapter-author}\clist_use:Nn \l_UniGraz_author_clist  {,\space}
+			\clist_if_empty:NF \l_ptxcd_author_clist {\parbox{\textwidth}{
+					\usekomafont{chapter-author}\clist_use:Nn \l_ptxcd_author_clist  {,\space}
 				}\par\vspace{3mm}}
 			\@hangfrom{#2}{#3}
 		} {
@@ -468,28 +468,28 @@
 	}
 
 	\renewcommand*{\addarticletocentry}[2]{%
-		\addcontentsline{\ext@toc}{chapter}{\protect\nonumberline\protect\TocAuthorEntry{\clist_use:Nn \l_UniGraz_author_clist  {,\space}}{#2}}%
+		\addcontentsline{\ext@toc}{chapter}{\protect\nonumberline\protect\TocAuthorEntry{\clist_use:Nn \l_ptxcd_author_clist  {,\space}}{#2}}%
 	}
 }
 
 %article structure
 \clist_map_inline:nn {title,subtitle,imprint,unknown,head,doi} {
-	\tl_new:c {l_UniGraz_#1_tl}
+	\tl_new:c {l_ptxcd_#1_tl}
 }
 
-\clist_new:N \l_UniGraz_author_clist
-\clist_new:N \l_UniGraz_authorkeys_clist
+\clist_new:N \l_ptxcd_author_clist
+\clist_new:N \l_ptxcd_authorkeys_clist
 
 \keys_define:nn {ptxcd/article} {
-	author .clist_set:N = \l_UniGraz_author_clist,
-	authorkeys .clist_set:N = \l_UniGraz_authorkeys_clist,
-	title .tl_set:N = \l_UniGraz_title_tl,
-	head .tl_set:N = \l_UniGraz_head_tl,
-	subtitle .tl_set:N = \l_UniGraz_subtitle_tl,
-	imprint .tl_set:N = \l_UniGraz_imprint_tl,
-	doi .tl_set:N = \l_UniGraz_doi_tl,
+	author .clist_set:N = \l_ptxcd_author_clist,
+	authorkeys .clist_set:N = \l_ptxcd_authorkeys_clist,
+	title .tl_set:N = \l_ptxcd_title_tl,
+	head .tl_set:N = \l_ptxcd_head_tl,
+	subtitle .tl_set:N = \l_ptxcd_subtitle_tl,
+	imprint .tl_set:N = \l_ptxcd_imprint_tl,
+	doi .tl_set:N = \l_ptxcd_doi_tl,
 	imprint .initial:n =  {
-		\citeimprint {\clist_use:Nn \l_UniGraz_authorkeys_clist {,}}
+		\citeimprint {\clist_use:Nn \l_ptxcd_authorkeys_clist {,}}
 	},
 	license-type .tl_set:N = \l__ptxcd_license_type_tl,
 	license-type .initial:n =,
@@ -498,23 +498,23 @@
 	license-version .tl_set:N = \l__ptxcd_license_version_tl,
 	license-version .initial:n =,
 	license .tl_set:N = \l__ptxcd_license_tl,
-	unknown .code:n = \tl_put_right:Nx \l_UniGraz_unknown_tl {,\l_keys_key_tl =\exp_not:n {#1}},
+	unknown .code:n = \tl_put_right:Nx \l_ptxcd_unknown_tl {,\l_keys_key_tl =\exp_not:n {#1}},
 }
 
-\cs_new:Nn \__UniGraz_clear_article_vars: {
+\cs_new:Nn \__ptxcd_clear_article_vars: {
 	\clist_map_inline:nn {title,subtitle,unknown,head,doi} {
-		\tl_clear:c {l_UniGraz_##1_tl}
+		\tl_clear:c {l_ptxcd_##1_tl}
 	}
 
-	\tl_set:Nn \l_UniGraz_imprint_tl {\citeimprint {\clist_use:Nn \l_UniGraz_authorkeys_clist {,}}}
+	\tl_set:Nn \l_ptxcd_imprint_tl {\citeimprint {\clist_use:Nn \l_ptxcd_authorkeys_clist {,}}}
 
 	\tl_set_eq:NN \l__ptxcd_license_type_tl \g__ptxcd_license_type_tl
 	\tl_set_eq:NN \l__ptxcd_license_modifier_tl \g__ptxcd_license_modifier_tl
 	\tl_set_eq:NN \l__ptxcd_license_version_tl \g__ptxcd_license_version_tl
 
-	\clist_clear:N \l_UniGraz_author_clist
-	\clist_clear:N \l_UniGraz_authokeys_clist
-	\tl_set:Nn \l_UniGraz_head_tl {l_UniGraz_title_tl}
+	\clist_clear:N \l_ptxcd_author_clist
+	\clist_clear:N \l_ptxcd_authokeys_clist
+	\tl_set:Nn \l_ptxcd_head_tl {l_ptxcd_title_tl}
 }
 
 
@@ -535,36 +535,36 @@
 \newcommand*{\currentarticlelabel}{autolabel-\CurrentFile}
 
 \newcommand*{\Article}[2][]{
-	\__UniGraz_clear_article_vars:
+	\__ptxcd_clear_article_vars:
 	\keys_set:nn {ptxcd/article} {title={#2},#1}
 
 	\tl_set_eq:NN \doclicense@type \l__ptxcd_license_type_tl
 	\tl_set_eq:NN \doclicense@modifier \l__ptxcd_license_modifier_tl
 	\tl_set_eq:NN \doclicense@version \l__ptxcd_license_version_tl
 
-	\clist_if_empty:NF \l_UniGraz_authorkeys_clist
+	\clist_if_empty:NF \l_ptxcd_authorkeys_clist
 	{
-		\clist_if_empty:NT \l_UniGraz_author_clist {
-			\clist_map_inline:Nn \l_UniGraz_authorkeys_clist {
-				\clist_put_right:Nn \l_UniGraz_author_clist {\citearticleauthor{##1}}
+		\clist_if_empty:NT \l_ptxcd_author_clist {
+			\clist_map_inline:Nn \l_ptxcd_authorkeys_clist {
+				\clist_put_right:Nn \l_ptxcd_author_clist {\citearticleauthor{##1}}
 			}
 		}
 	}
-	\tl_if_empty:NTF \l_UniGraz_unknown_tl {
+	\tl_if_empty:NTF \l_ptxcd_unknown_tl {
 		\article{#2}
 	} {
 		\exp_last_unbraced:Nno \use:n {\article[}
-		\l_UniGraz_unknown_tl]{#2}
+		\l_ptxcd_unknown_tl]{#2}
 	}
-	\tl_if_empty:NF \l_UniGraz_subtitle_tl {
+	\tl_if_empty:NF \l_ptxcd_subtitle_tl {
 		\begin{flushleft}
 			\usekomafont{article-subtitle}
-			\l_UniGraz_subtitle_tl
+			\l_ptxcd_subtitle_tl
 		\end{flushleft}
 	}
 	\label{\currentarticlelabel.first}
 	\vfill
-	\tl_if_empty:NF \l_UniGraz_imprint_tl {
+	\tl_if_empty:NF \l_ptxcd_imprint_tl {
 		\setlength{\fboxrule}{.55mm}
 		\setlength{\fboxsep}{2mm}
 		\fbox{
@@ -577,7 +577,7 @@
 				\par\addvspace{\baselineskip}
 				\l__ptxcd_license_tl
 				\par\addvspace{\baselineskip}
-				\l_UniGraz_imprint_tl\par
+				\l_ptxcd_imprint_tl\par
 			}
 		}
 	}
@@ -585,7 +585,6 @@
 }
 
 \tl_new:N \g_ptxcd_collection_imprint_info_tl
-\tl_new:N \l_ptxcd_doi_tl
 
 \tl_gset:Nn \g_ptxcd_collection_imprint_info_tl {
 	\@title,~\@author,~\@date,~S.~ \pageref{\currentarticlelabel.first}–\pageref{\currentarticlelabel.last}
@@ -758,7 +757,7 @@ font=\sffamily\huge,
 
 \let\orig@backmatter\backmatter
 \renewcommand*{\backmatter}{
-	\__UniGraz_clear_article_vars:
+	\__ptxcd_clear_article_vars:
 	\orig@backmatter
 	\StartTocPart{\appendixname}
 }
