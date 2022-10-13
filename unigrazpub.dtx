@@ -1,32 +1,85 @@
-%% This is file `unigrazpub.cls' version 1.00 (2022/10/05),
-%% it is part of
-%% UniGrazPub – LaTeX Templates for Graz University Library Publishing
-%% ----------------------------------------------------------------------------
-%%
-%%  Copyright (C) 2022 by Marei Peischl <marei@peitex.de>
-%%
-%% ============================================================================
-%% This work may be distributed and/or modified under the
-%% conditions of the LaTeX Project Public License, either version 1.3c
-%% of this license or (at your option) any later version.
-%% The latest version of this license is in
-%% http://www.latex-project.org/lppl.txt
-%% and version 1.3c or later is part of all distributions of LaTeX
-%% version 2008/05/04 or later.
-%%
-%% This work has the LPPL maintenance status `maintained'.
-%%
-%% The Current Maintainers of this work are
-%%   Marei Peischl <unigrazpub@peitex.de>
-%%
-%% The development respository can be found at
-%% https://github.com/peitex/unigrazpub
-%% Please use the issue tracker for feedback!
-%%
-%% ============================================================================
-%%
-\ProvidesClass{unigrazpub}[2022/10/05 v1.00 LaTeX Templates for Graz University Library Publishing]
+% \iffalse meta-comment
+% Doc-Source file to use with LaTeX2e
+% UniGrazPub – LaTeX Templates for Graz University Library Publishing
+% ----------------------------------------------------------------------------
+% Copyright (C) 2022 by Marei Peischl <marei@peitex.de>
+% ----------------------------------------------------------------------------
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either version 1.3c
+% of this license or (at your option) any later version.
+% The latest version of this license is in
+% http://www.latex-project.org/lppl.txt
+% and version 1.3c or later is part of all distributions of LaTeX
+% version 2008/05/04 or later.
+%
+% This work has the LPPL maintenance status `maintained'.
+%
+% The Current Maintainers of this work are
+% Marei Peischl <unigrazpub@peitex.de>
+%
+% This work consists of the files unigrazpub.dtx and unigrazpub.ins
+% and the derived file unigrazpub.cls
+%
+% The development respository can be found at
+% https://github.com/peitex/unigrazpub
+% Please use the issue tracker for feedback!
+% \fi
+%
+% \iffalse
+%<*driver>
+\ProvidesFile{unigrazpub.dtx}
+%</driver>
+%<class>\NeedsTeXFormat{LaTeX2e}[2020/10/01]
+%<class>\ProvidesClass{unigrazpub}
+%<*class>
+	[2022/10/05 v1.00 LaTeX Templates for Graz University Library Publishing]
+%</class>
+%
+%<*driver>
+\documentclass[
+	english,
+	license-type=,%disable doclicense loading due to a conflict with doc
+	]{unigrazpub}
 
+\usepackage[english]{babel}
+\usepackage{microtype}
+
+\let\savemaketitle\maketitle
+\usepackage{doc}
+\let\maketitle\savemaketitle
+
+\OnlyDescription
+
+\begin{document}
+	\DocInput{unigrazpub.dtx}
+\end{document}
+%</driver>
+% \fi
+%
+% \CheckSum{0}
+%
+% \CharacterTable
+%  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
+%   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
+%   Digits        \0\1\2\3\4\5\6\7\8\9
+%   Exclamation   \!     Double quote  \"     Hash (number) \#
+%   Dollar        \$     Percent       \%     Ampersand     \&
+%   Acute accent  \'     Left paren    \(     Right paren   \)
+%   Asterisk      \*     Plus          \+     Comma         \,
+%   Minus         \-     Point         \.     Solidus       \/
+%   Colon         \:     Semicolon     \;     Less than     \<
+%   Equals        \=     Greater than  \>     Question mark \?
+%   Commercial at \@     Left bracket  \[     Backslash     \\
+%   Right bracket \]     Circumflex    \^     Underscore    \_
+%   Grave accent  \`     Left brace    \{     Vertical bar  \|
+%   Right brace   \}     Tilde         \~}
+%
+%\iffalse
+%    \begin{macrocode}
+%<*unigrazpub.cls>
+%    \end{macrocode}
+%\fi
 \RequirePackage{l3keys2e}
 
 \ExplSyntaxOn
@@ -66,9 +119,9 @@
 \RequirePackage{ragged2e}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% fontsizes
-% modified version of scrsize10pt.clo
-% Copyright (c) 1994-2019 Markus Kohm [komascript at gmx info]
+%% fontsizes
+%% modified version of scrsize10pt.clo
+%% Copyright (c) 1994-2019 Markus Kohm [komascript at gmx info]
 
 \def\normalsize{%
 	\@setfontsize\normalsize{10bp}{13.3bp}%
@@ -684,5 +737,11 @@ font=\sffamily\huge,
 \newcommand*{\insertdate}{\@date}
 \newcommand*{\insertpublishers}{\@publishers}
 
-
+\endinput
+%\iffalse
+%    \begin{macrocode}
+%</unigrazpub.cls>
+%    \end{macrocode}
+%\fi
+%\Finale
 \endinput

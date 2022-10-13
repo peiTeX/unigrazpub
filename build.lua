@@ -2,19 +2,14 @@
 
 module = "unigrazpub"
 
-installfiles = {"tex/*.cls","*.cls"}
-sourcefiles  = installfiles
-unpackfiles  = { }
-
-packtdszip = true
-
 typesetexe="lualatex"
-typesetopts=""
 
 supportdir = "examples/"
 
 typesetsuppfiles = {"*/*.tex", "*/*.bib"}
 demofiles = {"examples/*/*.tex", "examples/*/*.bib"}
-typesetdemofiles = { "example/*/DEMO*.tex" }
+
+typesetdemofiles = {"DEMO*.tex"}
+typesetfiles = {"*.dtx", "DEMO*.tex"}
 
 textfiles = {"*.md"}
