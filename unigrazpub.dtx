@@ -51,6 +51,51 @@
 
 \OnlyDescription
 
+\newcommand*{\class}[1]{#1}
+\newcommand*{\package}[1]{#1}
+
+\MakeShortVerb{\|}
+
+\makeatletter
+
+\let\orig@marginpar\marginpar
+\newcommand{\MacroDescriptionsMarginpar}[1]{
+	\orig@marginpar{
+		\strut\hfill
+		\rlap{\hskip-\marginparwidth\parbox{\dimexpr3cm+\marginparwidth}{
+				#1}
+	}}
+}
+\newenvironment{MacroDescriptions}{
+	\begin{addmargin}[3cm]{0cm}%
+	\let\marginpar\MacroDescriptionsMarginpar
+}{\end{addmargin}}
+\makeatother
+
+\AddToHook{begindocument/before}[ptxcd/hypersetup]{%
+	\hypersetup{colorlinks=false}
+}
+
+\DeclareHookRule{begindocument/before}{doc/hyperref}{<}{ptxcd/hypersetup}
+
+\begin{filecontents}{unigrazpub.bib}
+	@online{biblatex,
+		title={The biblatex Package},
+		author={Kime, Philip and Wemheuer, Moritz and Lehmann, Philipp},
+		date={2022-07-12},
+		url={http://mirrors.ctan.org/macros/latex/contrib/biblatex/doc/biblatex.pdf}
+	}
+	@online{doclicense,
+		author={Schneider, Robin},
+		title={The doclicense package},
+		date={2022-05-18},
+		url={http://mirrors.ctan.org/macros/latex/contrib/doclicense/doclicense.pdf}
+	}
+\end{filecontents}
+
+\addbibresource{unigrazpub.bib}
+
+
 \begin{document}
 	\DocInput{unigrazpub.dtx}
 \end{document}
@@ -75,6 +120,154 @@
 %   Grave accent  \`     Left brace    \{     Vertical bar  \|
 %   Right brace   \}     Tilde         \~}
 %
+%
+% \changes{v1.0}{2022/10/13}{Initial version in DocTeX format}
+% \GetFileInfo{unigrazpub.dtx}
+%
+% \author{Marei Peischl <\href{mailto:unigrazpub@peitex.de}{unigrazpub@peitex.de}>}
+% \title{\LaTeX-Templates for Graz University Library Publishing}
+% \subtitle{User Documentation for version \fileversion, dated \filedate}
+% \date{September 2022}
+% \edition{1. Edition}
+%
+% \maketitle
+%
+% \tableofcontents
+%
+% \chapter{Getting started – Demo projects}
+% The \class{unigrazpub} bundle includes two demo projects (in German) which show how to use the \class{unigrazpub} class.
+%
+% The projects have the following structure:
+%
+% \section{Book – DEMO-monografie.tex}
+%
+% Demo project for a book.
+%
+% \begin{description}
+% \item[DEMO-monografie.tex] Main document includes the basic setup and loads the articles as well as the bibliography database.
+% \item[impressum.tex] Imprint. Sets the publishing details for the title pages.
+% \item[kapitel.tex] Example chapter
+% \item[literatur.bib] Bibliography database for the whole book.
+% \end{description}
+%
+% \section{Collection – DEMO-sammelband.tex}
+%
+% Demo project for a collection.
+%
+% \begin{description}
+%	\item[DEMO-sammelband.tex] Main document includes the basic setup and loads the articles as well as the bibliography database.
+%	\item[impressum.tex] Imprint. Sets the publishing details for the title pages.
+%	\item[beitrag1.tex] Example article. Can be cloned to add additional articles.
+%	\item[beitrag1.bib] Example bibliography database. Also includes the author information. One file per article is requested.
+% \end{description}
+%
+% \section{How to compile the demo projects}
+%
+% The requirements for compiling is an installed version of the \class{unigrazpub} bundle as well as an up to date \LaTeX{} distribution.
+% The class requires the use of lualatex and biber. Please set up your \LaTeX{} editor so those program will be used.
+% pdflatex is not supported.
+%
+%
+% \chapter{Features and Syntax}
+%
+% \section{Title}
+%
+% The structure of the titlepages is similar to standard classes. One is setting the data using macros like |\title| and the titlepage itself is created by calling |\maketitle|.
+%
+% \begin{verbatim}
+% \author{Marei Peischl}
+% \title{\LaTeX-Templates	for Graz University …}
+% \subtitle{User Documentation}
+% \date{September 2022}
+% \edition{1. Edition}
+% \maketitle
+% \end{verbatim}
+%
+% \begin{MacroDescriptions}
+% \DescribeMacro{\edition}
+% In addition to the common fields |\title|, |\author|, |\subtitle| and |\date| we also added a |\edition| field.
+%
+% \DescribeMacro{\lowertitleback}
+% The imprint is created using |\lowertitleback{<content>}|. The demo files included an example configuration on this. There have been created some user accessible macros to access the title data within that field.
+% \DescribeMacro{\insertedition}
+% \DescribeMacro{\insertpublishersaddress}
+% \DescribeMacro{\insertauthor}
+% \DescribeMacro{\insertdate}
+% \DescribeMacro{\insertpublishers} To access the title data within that one can use the macros within the margin. They will insert the corresponding data directly.
+%
+% The titlepages might be automatically generated. The CTAN version of the package does not include any logos but the logo will be automatically included if available. The Publisher will take care of this.
+%
+% \end{MacroDescriptions}
+%
+% \section{License}
+% \label{sec:license}
+%
+% The license information is prepared by using the \package{doclicese} \cite{doclicense} package. The default is set to CC-by 4.0.
+% To adjust the options \class{unigrazpub} provides the following options which will be passed to the package without the \enquote{license-} prefix:
+% \begin{verbatim}
+% license-type .initial:n = CC,
+% license-modifier = by,
+% license-version = 4.0
+% \end{verbatim}
+% The values can be changed according to the \package{doclicense} Doumentaton \cite{doclicense}. In case you don't want to use doclicese but manually provide information you can set the option |license-type=| to an empty value.
+%
+% \section{Collection mode}
+% The \class{unigrazpub} class provides the option |collection=true| which enables the collection mode.
+% Some of the features are only available when is is enabled.
+%
+% \subsection{Creating an article}
+% \DescribeMacro{\Article}
+%
+% The |\Article| macro is starting a new chapter and adding additional data fields to provide imprint data.
+%
+% \begin{verbatim}
+% \Article[
+% authorkeys={author1, author2},
+% subtitle=subtitle,
+% doi=XXXX,
+% ]{Article title}
+% \end{verbatim}
+%
+% The article should be saved in a separate file and have it's own bib-file.
+% Additionally one can also use the |license-| keys listed in \autoref{sec:license} to select another than the default license of the collection.
+%
+% \subsection{Abstracts}
+% The collection requires the author to place abstracts at the beginning of each article.
+% \DescribeEnv{abstract}
+% The abstract environment allows to select a language to allow the addition of a german as well as an english abstract.
+%
+% \begin{verbatim}
+%	\begin{abstract}[<language>]
+%		<Text>
+%
+%		\keywords{<keywords>}
+%	\end{abstract}
+%
+% \end{verbatim}
+%
+% \subsection{List of authors}
+% \begin{MacroDescriptions}
+% \DescribeMacro{\listofauthors} The macro |\listofauthors| creates a list of authors using the \package{biblatex} \cite{biblatex} package.
+% Therefore one has to add the authors for a paper within the corresponding bib-file:
+%
+% \begin{verbatim}
+% @author{author1,
+%	author={Name, GivenName},
+%	university={Universität Graz},
+%	institute={Institute},
+%	email= {name1.nachname1@uni-graz.at},
+%	orcid= {ORCID-ID1},
+%	addendum={Additional CV information}
+% }
+% \end{verbatim}
+% \end{MacroDescriptions}
+%
+% \appendix
+%
+% \printbibliography
+%
+% \StopEventually{}
+% \section{The Code}
 %\iffalse
 %    \begin{macrocode}
 %<*unigrazpub.cls>
@@ -211,7 +404,7 @@
 \@listi
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
-% font selection 
+% font selection
 
 %TODO pdflatex compat?
 \newkomafont{chapter-author}{\normalsize}
@@ -378,7 +571,7 @@
 			\parbox{\dimexpr\textwidth-2\fboxsep-2\fboxrule}{
 				\usekomafont{article-imprint}
 				\raggedright
-				
+
 				\g_ptxcd_collection_imprint_info_tl\\
 				\tl_if_empty:NF \l_ptxcd_doi_tl {\exp_args:No \url{https://doi.org/\l_ptxcd_doi_tl}}
 				\par\addvspace{\baselineskip}
