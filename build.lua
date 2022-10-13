@@ -4,10 +4,10 @@ module = "unigrazpub"
 
 typesetexe="lualatex"
 
-supportdir = "examples/"
-typesetsuppfiles = {"*/*.tex", "*/*.bib"}
-typesetdemofiles = {"examples/*/DEMO*.tex"}
-demofiles = {"examples/*"}
+supportdir = "."
+typesetsuppfiles = {"*/*/*.tex", "*/*/*.bib"}
+typesetdemofiles = {"*/*/DEMO*.tex"}
+demofiles = {"examples*"}
 flatten=false
 
 typesetdemofiles = {"DEMO*.tex"}
