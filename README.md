@@ -2,7 +2,7 @@
 
 Copyright (C) Marei Peischl (peiTeX)  <marei@peitex.de>, 2022
 
-unigrazpub 2022/10/05 v1.00
+unigrazpub 2022/10/13 v1.00
 
 ***************************************************************************
 
@@ -15,10 +15,10 @@ unigrazpub 2022/10/05 v1.00
 
 * README.md
 * build.lua - build script for l3build
-* tex/unigrazpub.cls - document class
+* unigrazpub.dtx and unigrazpub.ins as well as the derived file unigrazpub.cls
 
 and the demo projects within
-example/book and example/collection
+examples/monografie and examples/sammelband
 
 
 
@@ -52,4 +52,4 @@ The build process requires `lualatex` as a compiler and `biber` for the bibliogr
 
 ## Version History
 
- * v1.00 (2022-10-05) First official version
+ * v1.00 (2022-10-13) First CTAN version
