@@ -679,13 +679,16 @@
 	entryformat=\bfseries,%laufweite 6
 	linefill={\TOCLineLeaderFill[.]},
 	rightindent=\dimexpr13.4cm-\linewidth\relax,
+	raggedentrytext=true,
 	]{tocline}{chapter}
 	%}
 
 \DeclareTOCStyleEntry[
 	entryformat=\LARGE\bfseries,%laufweite 6
+	entrynumberformat=\bfseries,
 	linefill={\TOCLineLeaderFill[.]},
-	rightindent=\dimexpr13.4cm-\linewidth\relax,
+	pagenumberwidth=2em,
+	rightindent=\dimexpr13.4cm-\linewidth+1ex\relax,
 	beforeskip=7mm,
 ]{tocline}{part}
 
@@ -693,6 +696,7 @@
 	indent=5mm,
 	entryformat=\normalsize,%laufweite 6
 	linefill={\TOCLineLeaderFill[.]},
+	pagenumberwidth=2em,
 	rightindent=\dimexpr13.4cm-\linewidth\relax,
 ]{tocline}{section}
 
@@ -700,6 +704,7 @@
 \DeclareTOCStyleEntry[
 	indent=10mm,
 	entryformat=\normalsize,%laufweite 6
+	pagenumberwidth=2em,
 	linefill={\TOCLineLeaderFill[.]},
 	rightindent=\dimexpr13.4cm-\linewidth\relax,
 ]{tocline}{subsection}
@@ -709,6 +714,7 @@
 	indent=15mm,
 	entryformat=\normalsize,%laufweite 6
 	linefill={\TOCLineLeaderFill[.]},
+	pagenumberwidth=2em,
 	rightindent=\dimexpr13.4cm-\linewidth\relax,
 ]{tocline}{subsubsection}
 
@@ -717,6 +723,7 @@
 	indent=20mm,
 	entryformat=\normalsize,%laufweite 6
 	linefill={\TOCLineLeaderFill[.]},
+	pagenumberwidth=2em,
 	rightindent=\dimexpr13.4cm-\linewidth\relax,
 ]{tocline}{paragraph}
 
@@ -729,8 +736,6 @@ font=\sffamily\huge,
 
 \setcounter{tocdepth}{\paragraphnumdepth}
 \setcounter{secnumdepth}{\paragraphnumdepth}
-
-
 
 \newcommand*{\TocAuthorEntry}[2]{%
 	{\usekomafont{TocAuthorEntry}#1}\newline
