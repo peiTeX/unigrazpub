@@ -433,8 +433,6 @@
 \RedeclareSectionCommand[beforeskip=0pt,afterskip=20.8mm]{chapter}
 \RedeclareSectionCommands[afterskip=1.5mm,beforeskip=4.5mm,runin=false,afterindent=false]{section,subsection,subsubsection}
 \RedeclareSectionCommands[style=section,afterskip=1.5mm,beforeskip=3mm,,runin=false,afterindent=false]{paragraph}
-%\RedeclareSectionCommand[beforeskip=\baselineskip]{section}
-%\RedeclareSectionCommands[beforeskip=0pt]{subsection,subsubsection,paragraph}
 
 \ExplSyntaxOn
 \DeclareNewSectionCommand[
@@ -445,9 +443,6 @@
 	beforeskip=0pt,
 	afterskip=4mm
 ]{article}
-
-%\@addtoreset{section}{article}
-
 \renewcommand*{\articlemarkformat}{}
 \renewcommand*{\articleformat}{}
 
@@ -679,58 +674,50 @@
 	}
 }
 
-\DeclareTOCStyleEntry[
-beforeskip=7mm,
-entryformat=\bfseries\fontsize{13bp}{13.8bp}
-\showthe\dimexpr\linewidth-13.4cm\relax
-\selectfont,
-rightindent=\dimexpr\linewidth-13.4cm\relax,
-%pagenumberwidth=\dimexpr\linewidth-13.4cm\relax,
-]{tocline}{part}
-
 %\bool_if:NT \g__ptxcd_collection_bool {
 	\DeclareTOCStyleEntry[
 	entryformat=\bfseries,%laufweite 6
 	linefill={\TOCLineLeaderFill[.]},
+	rightindent=\dimexpr13.4cm-\linewidth\relax,
 	]{tocline}{chapter}
 	%}
 
 \DeclareTOCStyleEntry[
-entryformat=\LARGE\bfseries,%laufweite 6
-linefill={\TOCLineLeaderFill[.]},
-rightindent=\dimexpr\linewidth-13.4cm\relax,
-beforeskip=7mm,
+	entryformat=\LARGE\bfseries,%laufweite 6
+	linefill={\TOCLineLeaderFill[.]},
+	rightindent=\dimexpr13.4cm-\linewidth\relax,
+	beforeskip=7mm,
 ]{tocline}{part}
 
 \DeclareTOCStyleEntry[
-indent=5mm,
-entryformat=\normalsize,%laufweite 6
-linefill={\TOCLineLeaderFill[.]},
-rightindent=\dimexpr\linewidth-5mm-13.4cm\relax,
+	indent=5mm,
+	entryformat=\normalsize,%laufweite 6
+	linefill={\TOCLineLeaderFill[.]},
+	rightindent=\dimexpr13.4cm-\linewidth\relax,
 ]{tocline}{section}
 
 
 \DeclareTOCStyleEntry[
-indent=10mm,
-entryformat=\normalsize,%laufweite 6
-linefill={\TOCLineLeaderFill[.]},
-rightindent=\dimexpr\linewidth-10mm-13.4cm\relax,
+	indent=10mm,
+	entryformat=\normalsize,%laufweite 6
+	linefill={\TOCLineLeaderFill[.]},
+	rightindent=\dimexpr13.4cm-\linewidth\relax,
 ]{tocline}{subsection}
 
 
 \DeclareTOCStyleEntry[
-indent=15mm,
-entryformat=\normalsize,%laufweite 6
-linefill={\TOCLineLeaderFill[.]},
-rightindent=\dimexpr\linewidth-15mm-13.4cm\relax,
+	indent=15mm,
+	entryformat=\normalsize,%laufweite 6
+	linefill={\TOCLineLeaderFill[.]},
+	rightindent=\dimexpr13.4cm-\linewidth\relax,
 ]{tocline}{subsubsection}
 
 
 \DeclareTOCStyleEntry[
-indent=20mm,
-entryformat=\normalsize,%laufweite 6
-linefill={\TOCLineLeaderFill[.]},
-rightindent=\dimexpr\linewidth-20mm-13.4cm\relax,
+	indent=20mm,
+	entryformat=\normalsize,%laufweite 6
+	linefill={\TOCLineLeaderFill[.]},
+	rightindent=\dimexpr13.4cm-\linewidth\relax,
 ]{tocline}{paragraph}
 
 \RedeclareSectionCommand[
